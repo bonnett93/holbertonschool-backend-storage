@@ -1,0 +1,15 @@
+-- Ask for container Ubuntu 18.04 - Python 3.7
+-- Connect via SSH
+-- Or via the WebTerminal
+-- In the container, you should start MySQL before playing with it:
+$ service mysql start
+ * MySQL Community Server 5.7.30 is started
+$
+$ cat 0-list_databases.sql | mysql -uroot -p my_database
+Enter password:
+Database
+information_schema
+mysql
+performance_schema
+sys
+$

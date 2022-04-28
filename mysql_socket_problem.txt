@@ -1,0 +1,15 @@
+If you have this error:
+ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
+
+Then try:
+	1. sudo systemctl start mysqld
+If fails:
+	2. ls -a /var/run/mysqld
+	Must print some files like mysqld.pid mysqld.sock mysqld.sock.lock
+	Then make:
+		2.1 sudo chown mysql:mysql /var/run/mysqld
+				sudo chmod -R 755 /var/run/mysqld
+	know try again:
+	2.3 service mysql start
+If fails:
+	3. sudo service mysql start
