@@ -12,11 +12,11 @@ if __name__ == "__main__":
     logs = nginx_collection.count_documents({})
     print(f"{logs} logs")
 
-    get = nginx_collection.count_documents({"method": {"$in": ["GET"]}})
-    post = nginx_collection.count_documents({"method": {"$in": ["POST"]}})
-    put = nginx_collection.count_documents({"method": {"$in": ["PUT"]}})
-    patch = nginx_collection.count_documents({"method": {"$in": ["PATCH"]}})
-    delete = nginx_collection.count_documents({"method": {"$in": ["DELETE"]}})
+    get = nginx_collection.count_documents({"method": "GET"})
+    post = nginx_collection.count_documents({"method": "POST"})
+    put = nginx_collection.count_documents({"method": "PUT"})
+    patch = nginx_collection.count_documents({"method": "PATCH"})
+    delete = nginx_collection.count_documents({"method": "DELETE"})
     print(f"""Methods:
     \tmethod GET: {get}
     \tmethod POST: {post}
@@ -25,7 +25,7 @@ if __name__ == "__main__":
     \tmethod DELETE: {delete}""")
 
     get_status_check = nginx_collection.count_documents({
-        "method": {"$in": ["GET"]},
-        "path": {"$in": ["/status"]}
+        "method": "GET",
+        "path": "/status"
         })
     print(f"{get_status_check} status check")
