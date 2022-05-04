@@ -46,7 +46,7 @@ class Cache:
         value = self._redis.get(key)
         try:
             value = int(value.decode("utf-8"))
-        except ValueError:
+        except Exception:
             value = 0
         finally:
             return value
