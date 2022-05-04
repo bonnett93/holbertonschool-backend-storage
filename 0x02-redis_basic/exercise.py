@@ -25,7 +25,7 @@ class Cache:
         return key
 
     def get(self, key: str,
-            fn: Optional[Callable[..., Any]]) -> Union[str, bytes, int, float]:
+            fn: Optional[Callable] = None) -> Union[str, bytes, int, float]:
         """
         take a key string argument and an optional Callable argument named fn.
         This callable will be used to convert the data back to the
@@ -46,7 +46,7 @@ class Cache:
         value = self._redis.get(key)
         try:
             value = int(value.decode("utf-8"))
-        except Exception:
+        except ValueError:
             value = 0
         finally:
             return value
