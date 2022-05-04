@@ -47,6 +47,6 @@ class Cache:
         try:
             value = int(value.decode("utf-8"))
         except ValueError:
-            value = None
+            value = 0
         finally:
             return value
